@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StoQ.App.MainPage"
+             Title="StoQ 스토리지">
+
+    <Grid RowDefinitions="Auto, *, Auto" Padding="20">
+        <Label Grid.Row="0" Text="🏠 우리집 > 거실" FontSize="18" FontAttributes="Bold" Margin="0,0,0,10"/>
+
+        <CollectionView Grid.Row="1" x:Name="NodesListView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="0,5" Padding="15" CornerRadius="10" HasShadow="True">
+                        <HorizontalStackLayout Spacing="15">
+                            <Image Source="{Binding TypeImage}" WidthRequest="40" HeightRequest="40"/>
+                            <VerticalStackLayout VerticalOptions="Center">
+                                <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold"/>
+                                <Label Text="{Binding Description}" FontSize="12" TextColor="Gray"/>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center" Spacing="20" Margin="0,10">
+            <Button Text="QR 스캔" ImageSource="scan_icon.png" Clicked="OnScanClicked"/>
+            <Button Text="추가하기" Clicked="OnAddClicked"/>
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>
